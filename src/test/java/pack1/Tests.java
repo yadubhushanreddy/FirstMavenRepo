@@ -2,20 +2,26 @@ package pack1;
 
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentTest;
+
 
 public class Tests 
 {
+	public ExtentTest logger;
 	
 	ReusableMethods reuse = new ReusableMethods();
 	  
 	  @Test
 	  public void testCase1() throws InterruptedException 
 	  {
-		  reuse.openBrowser("Chrome");
+		  reuse.configureExtentReports();
+		  logger = reuse.startReportingForThisTestcase(logger,"Sample TestCase");
+		  reuse.openBrowser("Chrome",logger);
 		  reuse.waitFor(4);
-		  reuse.navigateUrl("http://newtours.demoaut.com/");
+		  reuse.navigateUrl("http://newtours.demoaut.com/",logger);
 		  reuse.waitFor(4);
-		  reuse.closeBrowser();	  
+		  reuse.closeBrowser(logger);
+		  reuse.finishAndSaveReport(logger);
 	  }
 
 }
