@@ -23,6 +23,7 @@ public class Tests
 		  reuse.clickElement("//a[text()='REGISTER']", "Register", logger);
 		  reuse.waitFor(4);
 		  reuse.enterData("//input[@name='firstName']", "First Name", "Yadu bhushan", logger);
+		  reuse.enterData("//input[@name='lastName']", "Last Name", "Allatipalli", logger);
 		  reuse.waitFor(4);
 		  reuse.closeBrowser(logger);
 		  reuse.finishAndSaveReport(logger);
