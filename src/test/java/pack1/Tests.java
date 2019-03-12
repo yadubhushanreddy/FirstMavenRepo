@@ -16,6 +16,7 @@ public class Tests
 	  {
 		  reuse.configureExtentReports();
 		  logger = reuse.startReportingForThisTestcase(logger,"Sample TestCase");
+		  System.out.println("Report Configuration Successful");
 		  reuse.openBrowser("Chrome",logger);
 		  reuse.waitFor(4);
 		  reuse.navigateUrl("http://newtours.demoaut.com/",logger);
