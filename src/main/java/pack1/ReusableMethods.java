@@ -87,15 +87,15 @@ public static ExtentReports extentReports;
 		try
 		{
 		waitForElement(xpath, logger).sendKeys(data);
-		System.out.println("Entering "+data+"into "+element+" Successful");
-		logger.log(Status.PASS, "Entering "+data+"into "+element+" Successful");
+		System.out.println("Entering "+"\""+data+"\""+" into "+element+" Successful");
+		logger.log(Status.PASS, "Entering "+"\""+data+"\""+" into "+element+" Successful");
 		}
 		catch(Exception e)
 		{
-			System.out.println("Entering "+data+"into "+element+" Failed");
-			logger.log(Status.FAIL, "Entering "+data+"into "+element+" Failed");
+			System.out.println("Entering "+"\""+data+"\""+" into "+element+" Failed");
+			logger.log(Status.FAIL, "Entering "+"\""+data+"\""+" into "+element+" Failed");
 			System.out.println(e.getMessage());
-			Assert.fail("Entering "+data+"into "+element+" Failed");
+			Assert.fail("Entering "+"\""+data+"\""+" into "+element+" Failed");
 		}
 		
 	}
