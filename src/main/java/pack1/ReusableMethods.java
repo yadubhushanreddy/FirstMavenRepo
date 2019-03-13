@@ -1,9 +1,11 @@
 package pack1;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,7 +24,14 @@ public static ExtentReports extentReports;
 	{
 		if(browserName.equalsIgnoreCase("Chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers//chromedriver");
+			if(System.getProperty("os.key").contains("Mac"))
+			{
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers//MacDrivers//chromedriver");
+			}
+			else
+			{
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers//WindowsDrivers//chromedriver.exe");
+			}
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 			System.out.println("Opening browser Successful");
