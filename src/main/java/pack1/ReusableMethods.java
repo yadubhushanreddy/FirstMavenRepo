@@ -1,11 +1,9 @@
 package pack1;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,10 +15,9 @@ import com.aventstack.extentreports.Status;
 public class ReusableMethods 
 {
 	
-WebDriver driver;
 public static ExtentReports extentReports;
 	
-	public void openBrowser(String browserName, ExtentTest logger)
+	public WebDriver openBrowser(WebDriver driver, String browserName, ExtentTest logger)
 	{
 		if(browserName.equalsIgnoreCase("Chrome"))
 		{
@@ -38,6 +35,8 @@ public static ExtentReports extentReports;
 			System.out.println("Opening browser Successful");
 			logger.log(Status.PASS, "Opening browser Successful");
 		}
+		
+		return driver;
 	}
 	
 	public static void configureExtentReports()
@@ -51,12 +50,12 @@ public static ExtentReports extentReports;
 		return logger;
 	}
 	
-	public void finishAndSaveReport(ExtentTest logger)
+	public void finishAndSaveReport()
 	{
 		extentReports.flush();
 	}
 	
-	public void navigateUrl(String url, ExtentTest logger)
+	public void navigateUrl(WebDriver driver, String url, ExtentTest logger)
 	{
 		try
 		{
@@ -73,7 +72,7 @@ public static ExtentReports extentReports;
 		}
 	}
 	
-	public WebElement waitForElement(String xpath, ExtentTest logger)
+	public WebElement waitForElement(WebDriver driver, String xpath, ExtentTest logger)
 	{
 		WebElement element = null;
 		try
@@ -92,11 +91,11 @@ public static ExtentReports extentReports;
 		}
 	}
 	
-	public void enterData(String xpath,String element,String data,ExtentTest logger)
+	public void enterData(WebDriver driver, String xpath,String element,String data,ExtentTest logger)
 	{
 		try
 		{
-		waitForElement(xpath, logger).sendKeys(data);
+		waitForElement(driver, xpath, logger).sendKeys(data);
 		System.out.println("Entering "+"\""+data+"\""+" into "+element+" Successful");
 		logger.log(Status.PASS, "Entering "+"\""+data+"\""+" into "+element+" Successful");
 		}
@@ -110,11 +109,11 @@ public static ExtentReports extentReports;
 		
 	}
 	
-	public void clickElement(String xpath,String element,ExtentTest logger)
+	public void clickElement(WebDriver driver, String xpath,String element,ExtentTest logger)
 	{
 		try
 		{
-			waitForElement(xpath, logger).click();
+			waitForElement(driver, xpath, logger).click();
 			System.out.println("Clicking on "+element+" Successful");
 			logger.log(Status.PASS, "Clicking on "+element+" Successful");
 		}
@@ -127,7 +126,7 @@ public static ExtentReports extentReports;
 		}
 	}
 	
-	public void closeBrowser(ExtentTest logger)
+	public void closeBrowser(WebDriver driver, ExtentTest logger)
 	{
 		driver.close();
 		System.out.println("Closing browser Successful");

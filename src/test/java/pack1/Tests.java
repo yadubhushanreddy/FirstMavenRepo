@@ -1,5 +1,8 @@
 package pack1;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -10,24 +13,52 @@ public class Tests
 	public ExtentTest logger;
 	
 	ReusableMethods reuse = new ReusableMethods();
+	
+	@BeforeSuite
+	public void preSetup()
+	{
+		ReusableMethods.configureExtentReports();
+	
+	}
 	  
 	  @Test
 	  public void testCase1() throws InterruptedException 
 	  {
-		  reuse.configureExtentReports();
-		  logger = reuse.startReportingForThisTestcase(logger,"Sample TestCase");
-		  System.out.println("Report Configuration Successful");
-		  reuse.openBrowser("Chrome",logger);
+		  WebDriver driver = null;
+		  logger = reuse.startReportingForThisTestcase(logger,"Sample TestCase1");
+		  driver = reuse.openBrowser(driver,"Chrome",logger);
 		  reuse.waitFor(4);
-		  reuse.navigateUrl("http://newtours.demoaut.com/",logger);
+		  reuse.navigateUrl(driver,"http://newtours.demoaut.com/",logger);
 		  reuse.waitFor(4);
-		  reuse.clickElement("//a[text()='REGISTER']", "Register", logger);
+		  reuse.clickElement(driver,"//a[text()='REGISTER']", "Register", logger);
 		  reuse.waitFor(4);
-		  reuse.enterData("//input[@name='firstName']", "First Name", "Yadu bhushan", logger);
-		  reuse.enterData("//input[@name='lastName']", "Last Name", "Allatipalli", logger);
+		  reuse.enterData(driver,"//input[@name='firstName']", "First Name", "Yadu bhushan", logger);
+		  reuse.enterData(driver,"//input[@name='lastName']", "Last Name", "Allatipalli", logger);
 		  reuse.waitFor(4);
-		  reuse.closeBrowser(logger);
-		  reuse.finishAndSaveReport(logger);
+		  reuse.closeBrowser(driver,logger);
+	  }
+	  
+	  @Test
+	  public void testCase2() throws InterruptedException 
+	  {
+		  WebDriver driver = null;
+		  logger = reuse.startReportingForThisTestcase(logger,"Sample TestCase2");
+		  driver = reuse.openBrowser(driver,"Chrome",logger);
+		  reuse.waitFor(4);
+		  reuse.navigateUrl(driver,"http://newtours.demoaut.com/",logger);
+		  reuse.waitFor(4);
+		  reuse.clickElement(driver,"//a[text()='REGISTER']", "Register", logger);
+		  reuse.waitFor(4);
+		  reuse.enterData(driver,"//input[@name='firstName']", "First Name", "Yadu bhushan", logger);
+		  reuse.enterData(driver,"//input[@name='lastName']", "Last Name", "Allatipalli", logger);
+		  reuse.waitFor(4);
+		  reuse.closeBrowser(driver,logger);
+	  }
+	  
+	  @AfterSuite
+	  public void tearDown()
+	  {
+		  reuse.finishAndSaveReport();
 	  }
 
 }
