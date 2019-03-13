@@ -24,7 +24,8 @@ public static ExtentReports extentReports;
 	{
 		if(browserName.equalsIgnoreCase("Chrome"))
 		{
-			if(System.getProperty("os.key").contains("Mac"))
+			System.out.println(System.getProperty("os.name"));
+			if(System.getProperty("os.name").contains("Mac"))
 			{
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers//MacDrivers//chromedriver");
 			}
