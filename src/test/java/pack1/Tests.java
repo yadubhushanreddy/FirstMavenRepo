@@ -10,7 +10,7 @@ import com.aventstack.extentreports.ExtentTest;
 
 public class Tests 
 {
-	public ExtentTest logger;
+	public ExtentTest logger,logger1;
 	
 	ReusableMethods reuse = new ReusableMethods();
 	
@@ -42,17 +42,17 @@ public class Tests
 	  public void testCase2() throws InterruptedException 
 	  {
 		  WebDriver driver = null;
-		  logger = reuse.startReportingForThisTestcase(logger,"Sample TestCase2");
-		  driver = reuse.openBrowser(driver,"Chrome",logger);
+		  logger1 = reuse.startReportingForThisTestcase(logger1,"Sample TestCase2");
+		  driver = reuse.openBrowser(driver,"Chrome",logger1);
 		  reuse.waitFor(4);
-		  reuse.navigateUrl(driver,"http://newtours.demoaut.com/",logger);
+		  reuse.navigateUrl(driver,"http://newtours.demoaut.com/",logger1);
 		  reuse.waitFor(4);
-		  reuse.clickElement(driver,"//a[text()='REGISTER']", "Register", logger);
+		  reuse.clickElement(driver,"//a[text()='REGISTER']", "Register", logger1);
 		  reuse.waitFor(4);
-		  reuse.enterData(driver,"//input[@name='firstName']", "First Name", "Yadu bhushan", logger);
-		  reuse.enterData(driver,"//input[@name='lastName']", "Last Name", "Allatipalli", logger);
+		  reuse.enterData(driver,"//input[@name='firstName']", "First Name", "Yadu bhushan", logger1);
+		  reuse.enterData(driver,"//input[@name='lastName']", "Last Name", "Allatipalli", logger1);
 		  reuse.waitFor(4);
-		  reuse.closeBrowser(driver,logger);
+		  reuse.closeBrowser(driver,logger1);
 	  }
 	  
 	  @AfterSuite
