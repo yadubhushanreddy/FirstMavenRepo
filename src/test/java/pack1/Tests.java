@@ -38,7 +38,7 @@ public class Tests
 		  reuse.closeBrowser(driver,logger);
 	  }
 	  
-	  @Test
+	  @Test(invocationCount=2)
 	  public void testCase2() throws InterruptedException 
 	  {
 		  WebDriver driver = null;
