@@ -27,14 +27,10 @@ public class Tests
 		  WebDriver driver = null;
 		  logger = reuse.startReportingForThisTestcase(logger,"Sample TestCase1");
 		  driver = reuse.openBrowser(driver,"Chrome",logger);
-		  reuse.waitFor(4);
 		  reuse.navigateUrl(driver,"http://newtours.demoaut.com/",logger);
-		  reuse.waitFor(4);
 		  reuse.clickElement(driver,"//a[text()='REGISTER']", "Register", logger);
-		  reuse.waitFor(4);
 		  reuse.enterData(driver,"//input[@name='firstName']", "First Name", "Yadu bhushan", logger);
 		  reuse.enterData(driver,"//input[@name='lastName']", "Last Name", "Allatipalli", logger);
-		  reuse.waitFor(4);
 		  reuse.closeBrowser(driver,logger);
 	  }
 	  
@@ -44,14 +40,10 @@ public class Tests
 		  WebDriver driver = null;
 		  logger1 = reuse.startReportingForThisTestcase(logger1,"Sample TestCase2");
 		  driver = reuse.openBrowser(driver,"Chrome",logger1);
-		  reuse.waitFor(4);
 		  reuse.navigateUrl(driver,"http://newtours.demoaut.com/",logger1);
-		  reuse.waitFor(4);
 		  reuse.clickElement(driver,"//a[text()='REGISTER']", "Register", logger1);
-		  reuse.waitFor(4);
 		  reuse.enterData(driver,"//input[@name='firstName']", "First Name", "Yadu bhushan", logger1);
 		  reuse.enterData(driver,"//input[@name='lastName']", "Last Name", "Allatipalli", logger1);
-		  reuse.waitFor(4);
 		  reuse.closeBrowser(driver,logger1);
 	  }
 	  
